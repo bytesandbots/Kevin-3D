@@ -28,12 +28,13 @@ public class enemyai : MonoBehaviour
             return;
         }
         agent.SetDestination(target.position);
-        if (Vector3.Distance(player.transform.position, transform.position) < 16f)
+        if (Vector3.Distance(player.transform.position, transform.position) < 14f)
         {
             if (!alrplay)
             {
                 Camera.main.GetComponent<AudioSource>().Play();
                 alrplay = true;
+                agent.speed = 20;
             }
            
         }
@@ -41,6 +42,7 @@ public class enemyai : MonoBehaviour
         {
             Camera.main.GetComponent<AudioSource>().Stop();
             alrplay = false;
+            agent.speed = 30;
         }
         if (Vector3.Distance(player.transform.position, transform.position) < 10f && CD == false) 
         {
@@ -59,6 +61,8 @@ public class enemyai : MonoBehaviour
             {
                 cdtime += Time.deltaTime;
             }
+            
         }
+        
     }
 }
